@@ -6,7 +6,7 @@ struct pa_node
 {
     char name[100],mode_of_admission[100],gender[100];
     char mobile[10];
-    char email[100],med[200],drugs[100],other[100],operations[100],dia[100],current[100];
+    char email[100],med[200],drugs[100],other[100],operations[100],dia[100],current[100],doctor_visit[100],patient_status[100];
     int year;
     int height,weight;
     struct pa_node*next;
@@ -16,7 +16,7 @@ struct doc_node
     char name[100];
     struct doc_node *pat;
     struct doc_node *pat1;
-}*p;
+}*p,*temp;
 struct doc_node *a[26];
 void make_it_NULL()
 {
@@ -84,12 +84,12 @@ void pat_entry_doctor()
     printf("enter the year of u r birth : ");
     scanf("%d",&patient->year);
     printf("\nHave you taken any medication before (If yes) please mention below");
-    scanf("%[^\n]s",patient->med);
-    printf("%s",patient->med);
-    printf("enter the doctor name");
-    scanf("%s",b);
+    printf("\n");
+    scanf("%[^\n]%s",patient->med);
+    printf("\nenter the doctor name");
+    scanf("%s",patient->doctor_visit);
     p=NULL;
-    p=doctor_find(b);
+    p=doctor_find(patient->doctor_visit);
     int tok=0;
     if(p!=NULL)
     {while(p->pat1!=NULL)
@@ -99,10 +99,11 @@ void pat_entry_doctor()
     printf("your token no is %d",tok);}
     else
     {
-        printf("doctor doesnt exist");
-        exit(0);
-    }
+        printf("doctor doesn't exist");
+
 }
+}
+
 
 main()
 {
@@ -129,7 +130,9 @@ scanf("%d",&choice);
   case 3:
       printf("under development");
       break;
-
+  case 4:
+      printf("under development");
+      break;
 }
 }while(choice!=4);
 
