@@ -1,4 +1,4 @@
-//hello everyone this my dsa project win sem 2019-202
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -9,8 +9,8 @@ struct pa_node//Patient Node
 {
     char name[100],mode_of_admission[100],gender[100];
     char mobile[10];
-    char email[100],med[200],drugs[100],other[100],operations[100],dia[100],current[100],doctor_visit[100],modeofconsultation[100];
-    int height,weight,token,year;
+    char email[100],med[200],drugs[100],other[100],operations[100],dia[100],current[100],doctor_visit[100],modeofconsultation[100],year[4];
+    int height,weight,token;
     struct pa_node *pat1;
     struct doc_node *doctor;
 }*t,*tem,*head=NULL;
@@ -99,7 +99,8 @@ if (flag==0)
     if(asd==1)
     doctor_find();
     else
-        return NULL;
+    {if(asd==2)
+    return NULL;}
 }
 
 else{
@@ -170,7 +171,7 @@ void pat_entry_doctor()//This function makes an appointment with the respetive c
     printf("\n");
     printf("XXXXXXXXXXXXXXXXXXXXXX PATIENT INFORMATION XXXXXXXXXXXXXXXX\n");
     printf("enter the year of u r birth : ");
-    scanf("%d",&patient->year);
+    scanf("%s",patient->year);
     printf("what type of consultation?\n1.Normal\n2.Emergency\nenter your choice:");
     int as;
     scanf("%d",&as);
@@ -178,8 +179,10 @@ void pat_entry_doctor()//This function makes an appointment with the respetive c
     {
     patient->doctor=doctor_find();
     l=patient->doctor;
+
     if(l!=NULL)
     {
+    strcpy(patient->doctor_visit,patient->doctor->name);
     t=l->pat1;
     if(t==NULL)
     {t=patient;
@@ -196,7 +199,7 @@ void pat_entry_doctor()//This function makes an appointment with the respetive c
     }
     }
     else
-    printf("doctor doesn't exist");
+    printf("doctor doesn't exist\n");
     }
     else
     {
@@ -237,7 +240,7 @@ printf("Hello Welcome to ABC HOSPITAL\n");
 do
 {
  total_cases=Normal+Emergency;
-printf("THE TOTAL NUMBER ODF ACTIVE CASES:%d\n THE TOTAL NUMBER OF NORMAL CONSULTANTs:%d\nTHE TOTAL NUMBER  OF EMERGENCY CASES:%d\n",total_cases,Normal,Emergency);
+printf("THE TOTAL NUMBER ODF ACTIVE CASES:%d\n THE TOTAL NUMBER OF NORMAL CONSULTATIONS:%d\nTHE TOTAL NUMBER  OF EMERGENCY CASES:%d\n",total_cases,Normal,Emergency);
 printf("\n1 : patients admission\n2 : new doctor entry\n3:  status\n4:exit\nenter your choice\n");
 scanf("%d",&choice);
     switch(choice)
@@ -256,7 +259,7 @@ scanf("%d",&choice);
       printf("enter your mem id:\n");
       struct pa_node *coun_pa,*patient;
       scanf("%x",&patient);
-          printf("name :%s\ngender :%s\nmobile number :%s\nemail:%s\n year :%d \n Consultant :%s\n Consultant mem id:%x\n",patient->name,patient->gender,patient->mobile,patient->email,
+          printf("name :%s\ngender :%s\nmobile number :%s\nemail:%s\n year :%s \n Consultant :%s\n Consultant mem id:%x\n",patient->name,patient->gender,patient->mobile,patient->email,
                  patient->year,patient->doctor_visit,patient->doctor);
         p=patient->doctor;
         coun_pa=p->pat1;
@@ -305,3 +308,4 @@ scanf("%d",&choice);
 
 
 }
+
