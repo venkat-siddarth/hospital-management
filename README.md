@@ -3,4 +3,4 @@
 * Linked list,Hashing are used as main data structures.
 * This application aims to handle large data of patients and doctors at runtime.
 
-<b>Review Video Link</b>:<a href="https://youtu.be/N9XJg98TkE8">VIDEO LINK</a>
+<b>Review Video Link</b>:<a href="https://youtu.be/N9XJg98TkE8" target="_blank">VIDEO LINK</a>
